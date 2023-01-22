@@ -14,16 +14,42 @@
     .card-img-top{
         padding : 30px;
     }
+
+    .loader{
+      height: 500px;
+    }
   </style>
   <body>
     <head>
-        <h1>Welcome to my chamber of Code</h1>
+        <h1 class="text-center text-warning">Welcome to my chamber of Code</h1>
     </head>
     <main class="container">
+      <!-- search button  -->
+      <section>
+        <div class="input-group mb-3 w-50 mx-auto">
+          <input id="search-field" type="text" class="form-control" placeholder="Search for phone" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary btn-warning" type="button" id="button">Search</button>
+        </div>
+      </section>
+      <!-- Display Search Results -->
         <section>
                 <div id="phone-container" class="row row-cols-1 row-cols-md-4 g-4">
  
                   </div>
+                  <div id="no-found" class="d-none mt-5">
+                    <h2 class="text-center text-danger">No results found. Try a new search</h2>
+                  </div>
+                  <div id="load-more" class="text-center d-none">
+                    <div id="load-more-btn" class="btn btn-warning">Load more</div>
+                  </div>
+        </section>
+        <!-- buffering -->
+        <section id="buffer" class="d-none">
+          <div class="loader d-flex justify-content-center align-items-center">
+            <div class="spinner-grow text-warning" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </section>
 
     </main>
