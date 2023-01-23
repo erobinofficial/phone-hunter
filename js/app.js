@@ -97,7 +97,7 @@ const displayPhoneDetails = phone => {
   console.log(phone);
   const { image, name, brand, slug, mainFeatures, others } = phone;
   const {chipSet, memory, displaySize} = mainFeatures;
-  const {WLAN, Bluetooth, GPS, Radio, NFC, USB} = others || 'nahid';
+  const {WLAN, Bluetooth, GPS, Radio, NFC, USB} = others || 'Not Available..';
   const modalDetails = document.getElementById('modal-details');
   modalDetails.innerHTML =`
   <div class="modal-header">
@@ -121,6 +121,7 @@ const displayPhoneDetails = phone => {
                 GPS : ${GPS || 'Not Available'}</br>
                 Radio : ${Radio || 'Not Available'}</br>
                 NFC : ${NFC || 'Not Available'}</br>
+                USB : ${USB || 'Not Available'}</br>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
