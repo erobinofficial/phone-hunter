@@ -84,6 +84,7 @@ input.addEventListener("keypress", function (event) {
 
 // phone details fetch data 
 const loadPhoneDetails = async id => {
+  console.log(id);
   const url = `https://openapi.programming-hero.com/api/phone/${id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -94,8 +95,9 @@ const loadPhoneDetails = async id => {
 // display phone details 
 const displayPhoneDetails = phone => {
   console.log(phone);
-  const { image, name, brand, slug, mainFeatures } = phone;
+  const { image, name, brand, slug, mainFeatures, others } = phone;
   const {chipSet, memory, displaySize} = mainFeatures;
+  const {WLAN, Bluetooth, GPS, Radio, NFC, USB} = others || 'nahid';
   const modalDetails = document.getElementById('modal-details');
   modalDetails.innerHTML =`
   <div class="modal-header">
@@ -111,9 +113,14 @@ const displayPhoneDetails = phone => {
               <h4>Brand : ${brand}</h4>
               <p>Chipset : ${chipSet}</br>
                 Memory : ${memory}</br>
-                Display Size: ${displaySize}
+                Display Size: ${displaySize}</br>
                 
                 <p>
+                WLAN : ${WLAN || 'Not Available'}</br>
+                Bluetooth : ${Bluetooth || 'Not Available'}</br>
+                GPS : ${GPS || 'Not Available'}</br>
+                Radio : ${Radio || 'Not Available'}</br>
+                NFC : ${NFC || 'Not Available'}</br>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -122,5 +129,3 @@ const displayPhoneDetails = phone => {
   `;
 
 }
-
-loadPhones('apple')
