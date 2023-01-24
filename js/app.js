@@ -7,6 +7,7 @@ const loadPhones = async (search, dataLimit) => {
 
 // display searched phones
 const displayPhones = (phones, dataLimit) => {
+  // console.log(phones);
   const phonesContainer = document.getElementById('phone-container');
   phonesContainer.textContent = '';
   // 10 phones only 
@@ -25,6 +26,7 @@ const displayPhones = (phones, dataLimit) => {
     noFound.classList.add('d-none');
   }
   phones.forEach(phone => {
+    // console.log(phone);
     const { image, phone_name, brand, slug } = phone;
     const phoneDiv = document.createElement('div');
     phoneDiv.classList.add('col');
@@ -96,10 +98,17 @@ const loadPhoneDetails = async id => {
 const displayPhoneDetails = phone => {
   console.log(phone);
   const { image, name, brand, slug, mainFeatures, others } = phone;
-  const {chipSet, memory, displaySize} = mainFeatures;
-  const {WLAN, Bluetooth, GPS, Radio, NFC, USB} = others || 'Not Available..';
+  const { chipSet, memory, displaySize, sensors } = mainFeatures;
+  const { WLAN, Bluetooth, GPS, Radio, NFC, USB } = others || 'Not Available..';
   const modalDetails = document.getElementById('modal-details');
-  modalDetails.innerHTML =`
+
+  const sensorsAdd = [];
+  // sensors.forEach(sensor => {
+  //   sensorsAdd.push(sensor);
+  // }
+
+
+  modalDetails.innerHTML = `
   <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">${name}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -122,6 +131,8 @@ const displayPhoneDetails = phone => {
                 Radio : ${Radio || 'Not Available'}</br>
                 NFC : ${NFC || 'Not Available'}</br>
                 USB : ${USB || 'Not Available'}</br>
+                Sensors : ${sensorsAdd}
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
