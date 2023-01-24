@@ -101,13 +101,6 @@ const displayPhoneDetails = phone => {
   const { chipSet, memory, displaySize, sensors } = mainFeatures;
   const { WLAN, Bluetooth, GPS, Radio, NFC, USB } = others || 'Not Available..';
   const modalDetails = document.getElementById('modal-details');
-
-  const sensorsAdd = [];
-  // sensors.forEach(sensor => {
-  //   sensorsAdd.push(sensor);
-  // }
-
-
   modalDetails.innerHTML = `
   <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">${name}</h1>
@@ -123,15 +116,14 @@ const displayPhoneDetails = phone => {
               <p>Chipset : ${chipSet}</br>
                 Memory : ${memory}</br>
                 Display Size: ${displaySize}</br>
-                
-                <p>
+                Features:</br>
                 WLAN : ${WLAN || 'Not Available'}</br>
                 Bluetooth : ${Bluetooth || 'Not Available'}</br>
                 GPS : ${GPS || 'Not Available'}</br>
                 Radio : ${Radio || 'Not Available'}</br>
                 NFC : ${NFC || 'Not Available'}</br>
                 USB : ${USB || 'Not Available'}</br>
-                Sensors : ${sensorsAdd}
+                Sensors : ${sensors.map(sensor => sensor).join(", ") || "Not Available"}
 
               </div>
               <div class="modal-footer">
